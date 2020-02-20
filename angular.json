@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "fe-message-board": {
@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "fe-message-board"
+    }
+  },
+  "defaultProject": "fe-message-board",
+  "cli": {
+    "analytics": "5d74afc9-98e8-4d67-bfca-d31ee3c66e00"
+  }
 }
