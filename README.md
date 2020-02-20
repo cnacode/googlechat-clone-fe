@@ -9,7 +9,6 @@ https://angular.io/guide/styleguide
 
 
 ## Folder Structure
-
     |-- app
         |-- modules
         |-- home
