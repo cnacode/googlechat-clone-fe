@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '@app/core/authentication';
 import { debounce } from 'lodash';
+import { GridTypes } from '@app/shared/page';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,9 @@ import { debounce } from 'lodash';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  //
+  gridType: GridTypes = GridTypes.Simple;
+  //
   loginForm: FormGroup;
   loading = false;
   submitted = false;
