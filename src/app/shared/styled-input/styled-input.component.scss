@@ -15,7 +15,6 @@ label {
 .input {
   margin-bottom: 0.5rem;
   outline: none;
-  width: 100%;
   position: relative;
   background-color: #f7f7f7;
   border: 1px solid #e6e6e6;
@@ -27,16 +26,30 @@ label {
   font-size: 18px;
 
   display: block;
-  width: 100%;
   background: transparent;
-  height: 60px;
-  padding: 0 20px;
+  height: 3rem;
+  padding: 0 0.4rem;
 
   &:focus {
     border-color: lighten($color: $color-background-primary, $amount: 25%);
   }
 }
 
-.wide {
-  min-width: 20rem !important;
+// phone and up
+@media (min-width: 200px) {
+  .input {
+    min-width: 80vw;
+  }
+}
+//tablet and up
+@media (min-width: 768px) {
+  .input {
+    min-width: 60vw;
+  }
+}
+// desktop and up
+@media (min-width: 992px) {
+  .input {
+    min-width: 25vw;
+  }
 }
