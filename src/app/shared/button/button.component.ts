@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
+export enum ButtonType {
+  Primary = 'primary',
+  Secondary = 'secondary'
+}
 @Component({
-  selector: 'app-button',
+  selector: 'styled-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent implements OnInit {
+  @Input()
+  type: ButtonType = ButtonType.Primary;
 
-  constructor() { }
+  isPrimary: boolean;
+  isSecondary: boolean;
 
-  ngOnInit(): void {
+  constructor() {
+    this.type === ButtonType.Primary ? (this.isPrimary = true) : (this.isSecondary = true);
   }
 
+  ngOnInit(): void {}
 }
