@@ -5,6 +5,7 @@ import { SimplePageComponent, SimplePageContent, SimplePageTitle } from '@app/sh
 import { ButtonComponent } from '@app/shared/button';
 import { CardComponent } from '@app/shared/card';
 import { TinyTextComponent } from '@app/shared/tiny-text';
+import { StyledInputComponent } from '@app/shared/styled-input';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { TinyTextComponent } from '@app/shared/tiny-text';
     // card component
     CardComponent,
     // tiny text component
-    TinyTextComponent
+    TinyTextComponent,
+    // styled input component
+    StyledInputComponent
   ],
   imports: [CommonModule],
   exports: [
@@ -35,7 +38,9 @@ import { TinyTextComponent } from '@app/shared/tiny-text';
     // card component
     CardComponent,
     // tiny text component
-    TinyTextComponent
+    TinyTextComponent,
+    // styled input component
+    StyledInputComponent
   ]
 })
 export class SharedModule {}
