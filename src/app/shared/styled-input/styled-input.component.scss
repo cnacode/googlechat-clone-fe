@@ -1,0 +1,42 @@
+@import '../../../assets/styles/variables.scss';
+
+label {
+  display: block;
+  margin: 0.5rem 0 0 0;
+}
+
+.label {
+  font-family: Montserrat-SemiBold;
+  font-size: 1.1rem;
+  color: #555555;
+  line-height: 1.5;
+}
+
+.input {
+  margin-bottom: 0.5rem;
+  outline: none;
+  width: 100%;
+  position: relative;
+  background-color: #f7f7f7;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+
+  font-family: Poppins-Regular;
+  color: #333333;
+  line-height: 1.2;
+  font-size: 18px;
+
+  display: block;
+  width: 100%;
+  background: transparent;
+  height: 60px;
+  padding: 0 20px;
+
+  &:focus {
+    border-color: lighten($color: $color-background-primary, $amount: 25%);
+  }
+}
+
+.wide {
+  min-width: 20rem !important;
+}
