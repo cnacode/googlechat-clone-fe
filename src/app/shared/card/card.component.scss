@@ -1,0 +1,23 @@
+@import '../../../assets/styles/variables.scss';
+
+.card {
+  width: 100%;
+  min-height: 75vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  border-width: 2px;
+  border-color: $color-background-primary;
+  border-radius: 15px;
+}
