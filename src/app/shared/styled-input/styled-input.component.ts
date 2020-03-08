@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 export enum InputWidth {
   Wide = 'wide',
@@ -12,14 +13,30 @@ export enum InputWidth {
 })
 export class StyledInputComponent implements OnInit {
   @Input()
-  type: string = 'text';
+  id: string;
 
   @Input()
-  label: string = 'input label not set';
+  form: FormGroup;
 
   @Input()
-  width: string = InputWidth.Normal;
+  type: string;
+
+  @Input()
+  label: string = 'no-label';
+
+  @Input()
+  size: string = InputWidth.Normal;
+
+  @Input()
+  name: string = 'no-name';
+
+  @Input()
+  required: boolean = false;
 
   constructor() {}
   ngOnInit(): void {}
+
+  get isValid() {
+    return this.form.controls[this.id].valid;
+  }
 }

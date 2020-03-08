@@ -4,7 +4,14 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-12">
-    <input type="{{ type }}" class="input" [ngClass]="{ wide: width === 'wide' }" />
+  <div class="col-12" [formGroup]="form">
+    <input
+      type="{{ type }}"
+      class="input"
+      [class.active]="size === 'wide'"
+      [formControlName]="name"
+      [id]="id"
+      [attr.required]="required"
+    />
   </div>
 </div>
