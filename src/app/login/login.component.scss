@@ -22,3 +22,7 @@
 .margin-top {
   margin-top: 1rem;
 }
+
+.alert-danger {
+  background-color: rgba($color: $color-background-primary, $alpha: 0.2);
+}
