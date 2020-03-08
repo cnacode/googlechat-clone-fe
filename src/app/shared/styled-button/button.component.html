@@ -1,0 +1,10 @@
+<button
+  [ngClass]="{
+    'btn-primary': isPrimary,
+    'btn-secondary': !isPrimary,
+    'btn-block': isWide
+  }"
+  type="{{ type }}"
+>
+  <ng-content></ng-content>
+</button>
