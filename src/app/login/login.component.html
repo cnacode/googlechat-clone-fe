@@ -2,10 +2,56 @@
   <page grid-type="simple">
     <page-content>
       <card>
-        <h1 class="title">Login</h1>
-        <styled-input type="text" label="Email" width="wide"></styled-input>
-        <styled-input type="password" label="Password" width="wide"></styled-input>
-        <styled-button>Sign In</styled-button>
+        <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+          <div class="row">
+            <div class="col-12">
+              <h1 class="title">Login</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <styled-input
+                [form]="loginForm"
+                id="username"
+                type="text"
+                name="username"
+                label="Username or Email"
+                size="wide"
+                required="true"
+              >
+              </styled-input>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <styled-input
+                [form]="loginForm"
+                id="password"
+                type="password"
+                name="password"
+                password="password"
+                label="Password"
+                size="wide"
+                required="true"
+              >
+              </styled-input>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-12 d-flex justify-content-center">
+              <styled-button type="submit" size="wide">Sign In</styled-button>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <ng-container *ngIf="errors.length">
+              <div class="col-8 alert alert-danger margin-top">
+                <li *ngFor="let error of errors">
+                  {{ error }}
+                </li>
+              </div>
+            </ng-container>
+          </div>
+        </form>
       </card>
     </page-content>
   </page>
