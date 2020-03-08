@@ -12,7 +12,7 @@ export class AppComponent {
   currentUser: User;
 
   constructor(private router: Router, private authenticationService: AuthenticationService) {
-    this.authenticationService.currentUser.subscribe(this.login);
+    this.authenticationService.user.subscribe(this.login);
   }
 
   private login(authenticatedUser) {

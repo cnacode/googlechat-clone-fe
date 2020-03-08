@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from '@app/app-routing.module';
 import { AppComponent } from '@app/app.component';
-import { mockAuthenticationProvider } from '@app/core/mocks';
 import { LoginComponent } from '@app/login/login.component';
 import { HomeComponent } from '@app/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -22,7 +21,7 @@ import { SharedModule } from './shared/shared.module';
     // custom modules
     SharedModule
   ],
-  providers: [mockAuthenticationProvider],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
