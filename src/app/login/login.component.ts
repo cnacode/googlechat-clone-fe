@@ -65,7 +65,6 @@ export class LoginComponent implements OnInit {
     };
 
     const handleError = error => {
-      console.log({ error });
       this.errors.push(error);
       this.loading = false;
     };
