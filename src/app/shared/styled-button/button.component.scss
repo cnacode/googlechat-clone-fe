@@ -59,3 +59,10 @@ button {
     opacity: 1;
   }
 }
+
+.disabled {
+  background-color: lighten($color: #333333, $amount: 50);
+  &:hover:before {
+    opacity: 0;
+  }
+}

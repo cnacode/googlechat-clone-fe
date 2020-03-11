@@ -2,9 +2,11 @@
   [ngClass]="{
     'btn-primary': isPrimary,
     'btn-secondary': !isPrimary,
-    'btn-block': isWide
+    'btn-block': isWide,
+    disabled: disabled
   }"
   type="{{ type }}"
+  [disabled]="disabled"
 >
   <ng-content></ng-content>
 </button>

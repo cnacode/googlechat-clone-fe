@@ -20,6 +20,9 @@ export class StyledButtonComponent implements OnInit {
   @Input()
   type: string;
 
+  @Input()
+  disabled: boolean = false;
+
   isPrimary: boolean;
   isWide: boolean;
 
