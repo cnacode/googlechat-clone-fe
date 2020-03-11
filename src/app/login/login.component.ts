@@ -5,6 +5,20 @@ import { first } from 'rxjs/operators';
 import { AuthenticationService } from '@app/core/authentication';
 import { GridTypes } from '@app/shared/page';
 
+/**
+ * This is the login page, includes:
+ * 1. A login form
+ * 2. Logic for submitting the form
+ * 3. Logic to show form validation and http errors
+ *
+ * @export
+ * @class LoginComponent
+ * @implements {OnInit}
+ *
+ * @property gridType {GridTypes} determines grid type for this page
+ * @property loginForm {FormGroup} contains the login form object
+ * @property loading { boolean } loading state for form, used to disable submit button
+ */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +28,6 @@ export class LoginComponent implements OnInit {
   gridType: GridTypes = GridTypes.Simple;
   loginForm: FormGroup;
   loading = false;
-  submitted = false;
   returnUrl: string;
   errors: string[] | any = [];
 
@@ -43,7 +56,7 @@ export class LoginComponent implements OnInit {
     this.errors = [];
     const { invalid } = this.loginForm;
 
-    // stop here if form is invalid
+    // if form is invalid, update page errors to show user
     if (invalid) {
       const { errors: usernameErrors } = this.loginForm.get('username');
       const { errors: passwordErrors } = this.loginForm.get('password');
@@ -57,7 +70,6 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.submitted = true;
     this.loading = true;
 
     const navigateToHome = () => {
