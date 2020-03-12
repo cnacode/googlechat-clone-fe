@@ -7,6 +7,7 @@ import { StyledButtonComponent } from '@app/shared/styled-button';
 import { CardComponent } from '@app/shared/card';
 import { TinyTextComponent } from '@app/shared/tiny-text';
 import { StyledInputComponent } from '@app/shared/styled-input';
+import { StyledTextAreaComponent } from '@app/shared/styled-textarea';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { StyledInputComponent } from '@app/shared/styled-input';
     // tiny text component
     TinyTextComponent,
     // styled input component
-    StyledInputComponent
+    StyledInputComponent,
+    // styled textarea component
+    StyledTextAreaComponent
   ],
   imports: [CommonModule, ReactiveFormsModule],
   exports: [
@@ -41,7 +44,9 @@ import { StyledInputComponent } from '@app/shared/styled-input';
     // tiny text component
     TinyTextComponent,
     // styled input component
-    StyledInputComponent
+    StyledInputComponent,
+    // styled textarea component
+    StyledTextAreaComponent
   ]
 })
 export class SharedModule {}
