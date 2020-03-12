@@ -30,7 +30,7 @@ export class AuthenticationService {
   public user: Observable<User>;
 
   constructor(private http: HttpClient) {
-    this.userSource = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.userSource = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
     this.user = this.userSource.asObservable();
   }
 
