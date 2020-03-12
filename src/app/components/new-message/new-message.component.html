@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col">
+    <styled-textarea
+      id="message"
+      name="message"
+      placeholder="What's on your mind?"
+      [form]="messageForm"
+      [options]="textareaOptions"
+    ></styled-textarea>
+  </div>
+</div>
+<div class="row justify-content-end">
+  <div class="col-1">
+    <styled-button type="submit" size="normal" [disabled]="loading">Post</styled-button>
+  </div>
+</div>
