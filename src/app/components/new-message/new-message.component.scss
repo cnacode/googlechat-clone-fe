@@ -1,0 +1,8 @@
+@import '../../../assets/styles/variables.scss';
+
+.new-message {
+  padding: 1rem;
+  border: 1.4px darken($color: $color-background-primary, $amount: 15) solid;
+  background-color: lighten($color: $color-background-primary, $amount: 12);
+  border-radius: 15px;
+}

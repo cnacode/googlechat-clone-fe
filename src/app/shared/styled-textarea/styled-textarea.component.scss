@@ -6,11 +6,14 @@ textarea {
   border: none;
   min-width: 100%;
   border-radius: 15px;
-  $bg-color: lighten($color-background-primary, 30);
+  $bg-color: lighten($color-background-primary, 40);
   background: rgba($bg-color, 50%);
   padding: 1rem;
   resize: none;
   &::placeholder {
     color: lighten($color: $bg-color, $amount: 3);
+  }
+  &:focus {
+    outline: none;
   }
 }

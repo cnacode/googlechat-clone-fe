@@ -1,16 +1,18 @@
-<div class="row">
-  <div class="col">
-    <styled-textarea
-      id="message"
-      name="message"
-      placeholder="What's on your mind?"
-      [form]="messageForm"
-      [options]="textareaOptions"
-    ></styled-textarea>
+<div class="new-message">
+  <div class="row">
+    <div class="col-12">
+      <styled-textarea
+        id="message"
+        name="message"
+        placeholder="What's on your mind?"
+        [form]="messageForm"
+        [options]="textareaOptions"
+      ></styled-textarea>
+    </div>
   </div>
-</div>
-<div class="row justify-content-end">
-  <div class="col-1">
-    <styled-button type="submit" size="normal" [disabled]="loading">Post</styled-button>
+  <div class="d-flex flex-row-reverse">
+    <div>
+      <styled-button type="submit" size="normal" [disabled]="loading">Post</styled-button>
+    </div>
   </div>
 </div>

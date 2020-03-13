@@ -1,8 +1,8 @@
-<div class="row label d-flex justify-content-center">
+<ng-container *ngIf="!options.hideLabel" class="row label d-flex justify-content-center">
   <div class="col">
     <label>{{ label }}</label>
   </div>
-</div>
+</ng-container>
 <div class="row d-flex justify-content-center">
   <div class="col" [formGroup]="form">
     <textarea
