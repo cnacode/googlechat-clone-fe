@@ -9,9 +9,20 @@ import { HomeComponent } from '@app/pages/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { NewMessageComponent } from '@app/components/new-message';
+import { MessageListComponent } from '@app/components/message-list';
+import { MessageComponent } from '@app/components/message';
+import { RepliesComponent } from '@app/components/replies';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, NewMessageComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    NewMessageComponent,
+    MessageListComponent,
+    MessageComponent,
+    RepliesComponent
+  ],
   imports: [
     // angular modules
     BrowserModule,
