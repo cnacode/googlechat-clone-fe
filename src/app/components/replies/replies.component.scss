@@ -1,0 +1,15 @@
+@import '../../../assets/styles/variables.scss';
+
+.replies {
+  background-color: $color-background-primary;
+  border-radius: 15px;
+  border: 1.4px darken($color: $color-background-primary, $amount: 15) solid;
+  padding: 1rem 0 4rem 0;
+
+  .back {
+    font-family: Montserrat-Medium;
+    svg {
+      margin-left: 0;
+    }
+  }
+}
