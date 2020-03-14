@@ -1,0 +1,34 @@
+@import '../../../assets/styles/variables.scss';
+
+.message {
+  margin-top: 0.5rem;
+  padding: 1rem 1rem 0.3rem 1rem;
+  .message-body {
+    border-bottom: 1.4px darken($color: $color-background-primary, $amount: 15) solid;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    font-family: Poppins-Regular;
+    font-size: 0.9rem;
+  }
+
+  .message-footer {
+    padding: 0.3rem 0 0 0;
+    font-size: 0.7rem;
+    font-family: Montserrat-Medium;
+
+    .view-link {
+      background: none;
+      border: none;
+      text-decoration: underline;
+      margin: 0;
+      padding: 0 0.1rem;
+      :hover {
+        background-color: none;
+        border: none;
+      }
+    }
+  }
+
+  border: 1.4px darken($color: $color-background-primary, $amount: 15) solid;
+  background-color: lighten($color: $color-background-primary, $amount: 12);
+  border-radius: 15px;
+}
