@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Message } from '@app/core/models';
 import { MessageOptions } from '@app/components/message';
 
@@ -8,45 +8,41 @@ import { MessageOptions } from '@app/components/message';
   styleUrls: ['./replies.component.scss']
 })
 export class RepliesComponent implements OnInit {
-  message: Message = {
-    id: 'id-of-message',
-    body: 'this is the body of the message',
-    createdAt: new Date(),
-    owner: 'Steve',
-    numberOfReplies: 24
-  };
+  @Input()
+  depth: number;
 
+  //test value
   replies: Message[] = [
     {
-      id: 'id-of-message',
+      id: 'reply-1',
       body: 'this is the body of the message',
       createdAt: new Date(),
       owner: 'Steve',
       numberOfReplies: 24
     },
     {
-      id: 'id-of-message',
+      id: 'reply-2',
       body: 'this is the body of the message',
       createdAt: new Date(),
       owner: 'Steve',
       numberOfReplies: 24
     },
     {
-      id: 'id-of-message',
+      id: 'reply-3',
       body: 'this is the body of the message',
       createdAt: new Date(),
       owner: 'Steve',
       numberOfReplies: 24
     },
     {
-      id: 'id-of-message',
+      id: 'reply-4',
       body: 'this is the body of the message',
       createdAt: new Date(),
       owner: 'Steve',
       numberOfReplies: 24
     },
     {
-      id: 'id-of-message',
+      id: 'reply-5',
       body: 'this is the body of the message',
       createdAt: new Date(),
       owner: 'Steve',
@@ -54,11 +50,16 @@ export class RepliesComponent implements OnInit {
     }
   ];
 
-  messageOptions: MessageOptions = {
-    showViewButton: false
-  };
+  currentDepth: number;
+
+  options: MessageOptions;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.currentDepth = this.depth + 1;
+    this.options = {
+      depth: this.currentDepth
+    };
+  }
 }

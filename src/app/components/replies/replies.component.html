@@ -1,33 +1,3 @@
-<div class="replies">
-  <div class="row justify-content-start">
-    <div class="col back">
-      <svg
-        class="bi bi-chevron-left"
-        width="3.5em"
-        height="3.5em"
-        viewBox="0 0 20 20"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M13.354 3.646a.5.5 0 010 .708L7.707 10l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"
-          clip-rule="evenodd"
-        ></path>
-      </svg>
-      Go Back
-    </div>
-  </div>
-  <div class="row justify-content-center mb-3">
-    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-      <message [content]="message" [options]="messageOptions"></message>
-    </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-lg-8 col-md-10 col-sm-10 col-xs-10">
-      <ng-container *ngFor="let reply of replies">
-        <message [content]="reply"></message>
-      </ng-container>
-    </div>
-  </div>
-</div>
+<ng-container *ngFor="let reply of replies">
+  <message [content]="reply" [options]="options"></message>
+</ng-container>

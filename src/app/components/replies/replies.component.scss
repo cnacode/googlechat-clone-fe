@@ -1,15 +1,27 @@
 @import '../../../assets/styles/variables.scss';
 
 .replies {
-  background-color: $color-background-primary;
-  border-radius: 15px;
-  border: 1.4px darken($color: $color-background-primary, $amount: 15) solid;
-  padding: 1rem 0 4rem 0;
-
+  $color: lighten(
+    $color: $color-background-primary,
+    $amount: 20
+  );
+  background-color: rgba($color, 20%);
+  border-radius: 5px;
+  border: 1.4px darken($color: $color-background-primary, $amount: 37) solid;
+  padding: 0;
+  hr {
+    border-top: 1.4px darken($color: $color-background-primary, $amount: 15) solid;
+    margin: 0;
+    padding: 0;
+  }
   .back {
     font-family: Montserrat-Medium;
     svg {
       margin-left: 0;
     }
+    .title {
+      font-size: 1.5rem;
+    }
+    padding: 0.6rem 0 0.5rem 0;
   }
 }
