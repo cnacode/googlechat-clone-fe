@@ -9,7 +9,9 @@
   <div class="row justify-content-between message-footer" [ngClass]="{ 'show-replies': showReplies }">
     <div class="col-2">
       <ng-container *ngIf="showReplyButton">
-        <button>reply</button>
+        <button (click)="toggleNewReply()">
+          {{ showNewReply ? 'Nevermind' : 'Reply' }}
+        </button>
       </ng-container>
     </div>
     <div class="col-4">
@@ -17,12 +19,14 @@
     </div>
     <div class="col-2">by {{ content.owner }}</div>
     <div class="col-3">
+      <!-- replies -->
       <ng-container *ngIf="showNumberOfReplies">
         <ng-container *ngIf="content.numberOfReplies == 0">
           no replies
         </ng-container>
         <ng-container *ngIf="content.numberOfReplies > 0">
           {{ content.numberOfReplies }}
+          <!-- produce gramatically correct text -->
           <ng-container *ngIf="content.numberOfReplies > 1">
             replies
           </ng-container>
@@ -43,6 +47,13 @@
     <div class="row message-replis d-flex justify-content-center mt-3 mb-3">
       <div class="col-11">
         <replies [id]="content.id" [depth]="currentDepth"></replies>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="showNewReply">
+    <div class="row justify-content-center mt-2 mb-2">
+      <div class="col-lg-8 col-md-10 col-xs-12 col-sm-12">
+        <new-reply [parentId]="content.id"></new-reply>
       </div>
     </div>
   </ng-container>

@@ -12,6 +12,7 @@ import { NewMessageComponent } from '@app/components/new-message';
 import { MessageListComponent } from '@app/components/message-list';
 import { MessageComponent } from '@app/components/message';
 import { RepliesComponent } from '@app/components/replies';
+import { NewReplyComponent } from '@app/components/new-reply/';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RepliesComponent } from '@app/components/replies';
     NewMessageComponent,
     MessageListComponent,
     MessageComponent,
-    RepliesComponent
+    RepliesComponent,
+    NewReplyComponent
   ],
   imports: [
     // angular modules

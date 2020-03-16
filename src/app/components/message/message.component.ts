@@ -28,6 +28,7 @@ export class MessageComponent implements OnInit {
   replies = [];
 
   showReplies = false;
+  showNewReply = false;
   loadingReplies = false;
 
   showReplyButton = true;
@@ -64,6 +65,9 @@ export class MessageComponent implements OnInit {
     } else {
       this.showReplies = false;
     }
+  }
+  public toggleNewReply() {
+    this.showNewReply = !this.showNewReply;
   }
 
   ngOnInit(): void {
