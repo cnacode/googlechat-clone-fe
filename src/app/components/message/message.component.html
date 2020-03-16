@@ -1,33 +1,49 @@
 <div id="{{ content.id }}" class="message">
+  <!-- Message body -->
   <div class="row">
     <div class="col-12 message-body">
       {{ content.body }}
     </div>
   </div>
-  <div class="row justify-content-between message-footer">
-    <div class="col-6">
-      {{
-        content.createdAt.toLocaleDateString('en-US', {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        })
-      }}
+  <!-- Message footer -->
+  <div class="row justify-content-between message-footer" [ngClass]="{ 'show-replies': showReplies }">
+    <div class="col-2">
+      <ng-container *ngIf="showReplyButton">
+        <button>reply</button>
+      </ng-container>
+    </div>
+    <div class="col-4">
+      {{ content.createdAt }}
     </div>
     <div class="col-2">by {{ content.owner }}</div>
     <div class="col-3">
-      <ng-container *ngIf="content.numberOfReplies > 1">
-        {{ content.numberOfReplies }} replies
-        <ng-container *ngIf="options.showViewButton">(<button class="view-link">view</button>)</ng-container>
-      </ng-container>
-      <ng-container *ngIf="content.numberOfReplies == 1">
-        {{ content.numberOfReplies }} reply
-        <ng-container *ngIf="options.showViewButton">(<button class="view-link">view</button>)</ng-container>
-      </ng-container>
-      <ng-container *ngIf="content.numberOfReplies == 0">
-        0 replies
+      <ng-container *ngIf="showNumberOfReplies">
+        <ng-container *ngIf="content.numberOfReplies == 0">
+          no replies
+        </ng-container>
+        <ng-container *ngIf="content.numberOfReplies > 0">
+          {{ content.numberOfReplies }}
+          <ng-container *ngIf="content.numberOfReplies > 1">
+            replies
+          </ng-container>
+          <ng-container *ngIf="content.numberOfReplies == 1">
+            reply
+          </ng-container>
+          (
+          <button [disabled]="loadingReplies" (click)="toggleReplies()">
+            {{ showReplies ? 'Hide' : 'View' }}
+          </button>
+          )
+        </ng-container>
       </ng-container>
     </div>
   </div>
+  <!-- Message replies -->
+  <ng-container *ngIf="showReplies">
+    <div class="row message-replis d-flex justify-content-center mt-3 mb-3">
+      <div class="col-11">
+        <replies [id]="content.id" [depth]="currentDepth"></replies>
+      </div>
+    </div>
+  </ng-container>
 </div>

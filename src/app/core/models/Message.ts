@@ -1,7 +1,7 @@
 export class Message {
   id: string;
   body: string;
-  createdAt: Date;
+  createdAt: Date | { toLocaleDateString };
   owner: string;
   numberOfReplies: number;
 }
