@@ -66,6 +66,7 @@ export class MessageComponent implements OnInit {
       this.showReplies = false;
     }
   }
+
   public toggleNewReply() {
     this.showNewReply = !this.showNewReply;
   }
