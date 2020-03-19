@@ -13,8 +13,9 @@ import { MessageListComponent } from '@app/components/message-list';
 import { MessageComponent } from '@app/components/message';
 import { RepliesComponent } from '@app/components/replies';
 import { NewReplyComponent } from '@app/components/new-reply/';
-
+import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { JwtInterceptor } from '@app/core/interceptors';
+import { ErrorInterceptor } from '@app/core/interceptors';
 
 @NgModule({
   declarations: [
@@ -35,9 +36,15 @@ import { JwtInterceptor } from '@app/core/interceptors';
     HttpClientModule,
 
     // custom modules
-    SharedModule
+    SharedModule,
+
+    // thirdparty modules
+    NgxPaginationModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

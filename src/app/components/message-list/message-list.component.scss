@@ -1,0 +1,30 @@
+@import '../../../assets/styles/variables.scss';
+
+.pagination {
+  ::ng-deep {
+    .ngx-pagination {
+      font-family: Montserrat-Medium;
+      li {
+        &.current {
+          background-color: lighten($color: $color-background-primary, $amount: 5);
+        }
+        &.pagination-next {
+          a {
+            color: lighten($color: $color-background-primary, $amount: 35);
+            &:hover {
+              background-color: lighten($color: $color-background-primary, $amount: 20);
+            }
+          }
+        }
+        span {
+          color: lighten($color: $color-background-primary, $amount: 35);
+        }
+        a {
+          &:hover {
+            background-color: lighten($color: $color-background-primary, $amount: 20);
+          }
+        }
+      }
+    }
+  }
+}

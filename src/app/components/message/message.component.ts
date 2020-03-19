@@ -14,13 +14,7 @@ export interface MessageOptions {
 })
 export class MessageComponent implements OnInit {
   @Input()
-  content: Message = {
-    id: 'id-1',
-    body: 'This is the text of the message 1',
-    createdAt: new Date('2019-01-05'),
-    owner: 'owner1',
-    numberOfReplies: 22
-  };
+  content: Message;
 
   @Input()
   options: MessageOptions;
@@ -41,7 +35,7 @@ export class MessageComponent implements OnInit {
   public toggleReplies() {
     if (!this.showReplies) {
       this.loadingReplies = true;
-      console.log(this.loadingReplies);
+
       setTimeout(() => {
         this.showReplies = true;
         this.replies = [
@@ -81,11 +75,5 @@ export class MessageComponent implements OnInit {
     }
     if (this.currentDepth > 1) this.showViewButton = false;
     // format the date
-    this.content.createdAt = this.content.createdAt.toLocaleDateString('en-US', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
   }
 }

@@ -17,8 +17,8 @@
     <div class="col-4">
       {{ content.createdAt }}
     </div>
-    <div class="col-2">by {{ content.owner }}</div>
-    <div class="col-3">
+    <div class="col-4">by {{ content.owner }}</div>
+    <div class="col-2">
       <!-- replies -->
       <ng-container *ngIf="showNumberOfReplies">
         <ng-container *ngIf="content.numberOfReplies == 0">

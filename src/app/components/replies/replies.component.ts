@@ -12,43 +12,7 @@ export class RepliesComponent implements OnInit {
   depth: number;
 
   //test value
-  replies: Message[] = [
-    {
-      id: 'reply-1',
-      body: 'this is the body of the message',
-      createdAt: new Date(),
-      owner: 'Steve',
-      numberOfReplies: 24
-    },
-    {
-      id: 'reply-2',
-      body: 'this is the body of the message',
-      createdAt: new Date(),
-      owner: 'Steve',
-      numberOfReplies: 24
-    },
-    {
-      id: 'reply-3',
-      body: 'this is the body of the message',
-      createdAt: new Date(),
-      owner: 'Steve',
-      numberOfReplies: 24
-    },
-    {
-      id: 'reply-4',
-      body: 'this is the body of the message',
-      createdAt: new Date(),
-      owner: 'Steve',
-      numberOfReplies: 24
-    },
-    {
-      id: 'reply-5',
-      body: 'this is the body of the message',
-      createdAt: new Date(),
-      owner: 'Steve',
-      numberOfReplies: 24
-    }
-  ];
+  replies: Message[];
 
   currentDepth: number;
 

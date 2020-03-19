@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Message } from '@app/core/models';
 import { MessageOptions } from '../message/message.component';
+import { MessageService } from '@app/core/services';
 
 @Component({
   selector: 'message-list',
@@ -8,64 +9,32 @@ import { MessageOptions } from '../message/message.component';
   styleUrls: ['./message-list.component.scss']
 })
 export class MessageListComponent implements OnInit {
-  messages: Message[] = [
-    {
-      id: 'id-1',
-      body: 'This is the text of the message 1',
-      createdAt: new Date('2019-01-05'),
-      owner: 'owner1',
-      numberOfReplies: 22
-    },
-    {
-      id: 'id-2',
-      body: 'This is the text of the message 2',
-      createdAt: new Date('2019-01-06'),
-      owner: 'owner2',
-      numberOfReplies: 29
-    },
-    {
-      id: 'id-3',
-      body: `Here is a much much much 
-      much much much much much much much
-      much much much much much much
-      much much much much much much
-      much much much much much much
-      much much longer message`,
-      createdAt: new Date('2019-01-06'),
-      owner: 'owner2',
-      numberOfReplies: 1
-    },
-    {
-      id: 'id-4',
-      body: `Here is a much much much 
-      much much much much much much much
-      much much much much much much
-      much much much much much much
-      much much much much much much
-      much much longer message`,
-      createdAt: new Date('2019-01-06'),
-      owner: 'owner2',
-      numberOfReplies: 0
-    },
-    {
-      id: 'id-5',
-      body: `Here is a much much much 
-      much much much much much much much
-      much much much much much much
-      much much much much much much
-      much much much much much much
-      much much longer message`,
-      createdAt: new Date('2019-01-06'),
-      owner: 'owner2',
-      numberOfReplies: 1
-    }
-  ];
+  currentPage: number = 0;
+  total: number = 0;
+  //test
+  messages: Message[] = [];
+  options: MessageOptions;
+  error: string = 'There are no messages yet.';
 
-  options: MessageOptions = {
-    depth: 0
+  constructor(private MessagesService: MessageService = MessagesService) {
+    this.options = {
+      depth: 0
+    };
+  }
+
+  ngOnInit(): void {
+    this.MessagesService.getMessages().subscribe(this.handleMessages, this.handleError);
+  }
+
+  handleMessages = ({ messages, total }) => {
+    console.log(messages);
+    this.messages = messages;
+    this.total = total;
   };
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  handleError = () => {
+    this.error = 'failed to load messages';
+    this.messages = [];
+    this.total = 0;
+  };
 }
