@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from '@app/app-routing.module';
 import { AppComponent } from '@app/app.component';
@@ -13,6 +13,8 @@ import { MessageListComponent } from '@app/components/message-list';
 import { MessageComponent } from '@app/components/message';
 import { RepliesComponent } from '@app/components/replies';
 import { NewReplyComponent } from '@app/components/new-reply/';
+
+import { JwtInterceptor } from '@app/core/interceptors';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import { NewReplyComponent } from '@app/components/new-reply/';
     // custom modules
     SharedModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
