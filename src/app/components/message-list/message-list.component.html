@@ -1,6 +1,7 @@
 <ng-container
   *ngFor="
     let message of messages
+      | async
       | paginate
         : {
             itemsPerPage: 25,
@@ -12,10 +13,10 @@
   <message [content]="message" [options]="options"></message>
 </ng-container>
 
-<div *ngIf="messages.length === 0" class="d-flex justify-content-center mt-5">
+<div *ngIf="messages.value.length === 0" class="d-flex justify-content-center mt-5">
   {{ error }}
 </div>
 
-<div class=" d-flex justify-content-center mt-3" *ngIf="messages.length">
-  <pagination-controls class="pagination" (pageChange)="currentPage = $event"></pagination-controls>
+<div class=" d-flex justify-content-center mt-3" *ngIf="messages.value.length">
+  <pagination-controls class="pagination" (pageChange)="getPaginatedMessages($event)"></pagination-controls>
 </div>

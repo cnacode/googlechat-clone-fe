@@ -19,8 +19,9 @@ export class MessageService {
     this.messages = new BehaviorSubject<Message[]>(JSON.parse(storedMessages));
   }
 
-  getMessages() {
-    return this.http.get<any>(`${environment.apiUrl}/message`).pipe(
+  getMessages(page) {
+    const limit = 25;
+    return this.http.get<any>(`${environment.apiUrl}/message?page=${page}&limit=${limit}`).pipe(
       catchError(response => {
         return throwError(response.error.message);
       }),

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Message } from '@app/core/models';
 import { MessageOptions } from '../message/message.component';
 import { MessageService } from '@app/core/services';
+import { skip } from 'rxjs/operators';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'message-list',
@@ -9,10 +11,11 @@ import { MessageService } from '@app/core/services';
   styleUrls: ['./message-list.component.scss']
 })
 export class MessageListComponent implements OnInit {
-  currentPage: number = 0;
+  currentPage: number = 1;
   total: number = 0;
+  loading: boolean = false;
   //test
-  messages: Message[] = [];
+  messages: BehaviorSubject<Message[]>;
   options: MessageOptions;
   error: string = 'There are no messages yet.';
 
@@ -20,21 +23,29 @@ export class MessageListComponent implements OnInit {
     this.options = {
       depth: 0
     };
+    this.messages = new BehaviorSubject([]);
   }
 
   ngOnInit(): void {
-    this.MessagesService.getMessages().subscribe(this.handleMessages, this.handleError);
+    this.getPaginatedMessages(this.currentPage);
   }
 
+  getPaginatedMessages = page => {
+    this.currentPage = page;
+    this.loading = true;
+    this.MessagesService.getMessages(page - 1).subscribe(this.handleMessages, this.handleError);
+  };
+
   handleMessages = ({ messages, total }) => {
-    console.log(messages);
-    this.messages = messages;
+    this.messages.next(messages);
     this.total = total;
+    this.loading = false;
   };
 
   handleError = () => {
     this.error = 'failed to load messages';
-    this.messages = [];
+    this.messages.next([]);
     this.total = 0;
+    this.loading = false;
   };
 }

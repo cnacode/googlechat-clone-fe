@@ -68,7 +68,6 @@ export class MessageComponent implements OnInit {
   ngOnInit(): void {
     this.currentDepth = JSON.parse(JSON.stringify(this.options.depth));
 
-    console.log(this.currentDepth, this.content.id);
     if (this.currentDepth > 1) {
       this.showReplyButton = false;
       this.showNumberOfReplies = false;
