@@ -4,5 +4,9 @@
   padding: 1rem;
   border: 1.4px darken($color: $color-background-primary, $amount: 15) solid;
   background-color: lighten($color: $color-background-primary, $amount: 12);
-  border-radius: 15px;
+  border-radius: 5px;
+}
+
+.alert-danger {
+  background-color: rgba($color: $color-background-primary, $alpha: 0.2);
 }
