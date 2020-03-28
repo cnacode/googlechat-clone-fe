@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Message } from '@app/core/models';
 import { MessageOptions } from '../message/message.component';
 import { MessageService } from '@app/core/services';
-import { skip } from 'rxjs/operators';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 
 @Component({
   selector: 'message-list',
@@ -15,7 +14,7 @@ export class MessageListComponent implements OnInit {
   total: number = 0;
   loading: boolean = false;
   //test
-  messages: BehaviorSubject<Message[]>;
+  messages: BehaviorSubject<Message[]> = new BehaviorSubject([]);
   options: MessageOptions;
   error: string = 'There are no messages yet.';
 
@@ -23,7 +22,7 @@ export class MessageListComponent implements OnInit {
     this.options = {
       depth: 0
     };
-    this.messages = new BehaviorSubject([]);
+    this.MessagesService.watch(this.handleMessages);
   }
 
   ngOnInit(): void {

@@ -12,11 +12,8 @@ export class MessageService {
   private replies: BehaviorSubject<Message[]>;
 
   constructor(private http: HttpClient) {
-    let storedMessages = localStorage.getItem('messages');
-    if (storedMessages === 'undefined') {
-      storedMessages = JSON.stringify([]);
-    }
-    this.messages = new BehaviorSubject<Message[]>(JSON.parse(storedMessages));
+    this.messages = new BehaviorSubject<Message[]>([]);
+    this.replies = new BehaviorSubject<Message[]>([]);
   }
 
   getMessages(page) {
@@ -38,7 +35,6 @@ export class MessageService {
           owner: `${message.owner.firstName} ${message.owner.lastName} (${message.owner.username})`
         }));
         response.messages = messages;
-        localStorage.setItem('messages', JSON.stringify(messages));
         this.messages.next(response);
         return response;
       })
@@ -46,41 +42,47 @@ export class MessageService {
   }
 
   getReplies(messageId) {
-    return this.http.get<any>(`${environment.apiUrl}/message/replies/${messageId}`).pipe(
+    return this.http.get<any>(`${environment.apiUrl}/message/reply/${messageId}`).pipe(
       catchError(response => {
         return throwError(response.error.message);
       }),
       tap(response => {
-        const replies: Message[] = response.replies;
-        this.replies.next(response);
-        return response;
+        const messages: Message[] = response.messages.map(message => ({
+          ...message,
+          id: message._id,
+          createdAt: new Date(message.createdAt).toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          }),
+          owner: `${message.owner.firstName} ${message.owner.lastName} (${message.owner.username})`
+        }));
+        response.messages = messages;
+        this.replies.next(response.messages);
+        return response.messages;
       })
     );
   }
 
-  createMessage(body, messageId?) {
+  createMessage(body, parentId = '') {
     return this.http
-      .post<any>(`${environment.apiUrl}/message/${messageId}`, { body })
+      .post<any>(`${environment.apiUrl}/message`, { body, parentId })
       .pipe(
         catchError(response => {
           return throwError(response.error.message);
         }),
         tap(response => {
-          if (messageId) {
-            const replies: Message[] = response.replies;
-            localStorage.setItem('replies', JSON.stringify(replies));
-            this.replies.next(replies);
-            return replies;
-          }
-          const messages: Message[] = response.messages;
-          localStorage.setItem('messages', JSON.stringify(messages));
-          this.replies.next(messages);
-          return messages;
+          this.getMessages(0);
         })
       );
   }
 
   public get messagesValue() {
     return this.messages.value;
+  }
+
+  public watch(onChange) {
+    this.messages.subscribe(onChange);
   }
 }
