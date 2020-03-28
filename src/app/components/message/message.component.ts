@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Message } from '@app/core/models';
 import { MessageService } from '@app/core/services';
+import { deepCopy } from '@app/core/utils';
 
 export interface MessageOptions {
   showViewButton?: boolean;
@@ -62,19 +63,8 @@ export class MessageComponent implements OnInit {
     this.showNewReply = !this.showNewReply;
   }
 
-  deepCopy = object => {
-    const copyObject: any = {};
-    Object.keys(object).forEach(key => {
-      if (object[key] === 'object' && object.hasOwnProperty(object[key])) this.deepCopy(object[key]);
-      else {
-        copyObject[key] = object[key];
-      }
-    });
-    return copyObject;
-  };
-
   ngOnInit(): void {
-    this.currentDepth = this.deepCopy(this.options).depth;
+    this.currentDepth = deepCopy(this.options).depth;
 
     if (this.currentDepth > 1) {
       this.showReplyButton = false;
