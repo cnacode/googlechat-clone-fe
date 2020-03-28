@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Message } from '@app/core/models';
+import { MessageService } from '@app/core/services';
 
 export interface MessageOptions {
   showViewButton?: boolean;
@@ -24,40 +25,36 @@ export class MessageComponent implements OnInit {
   showReplies = false;
   showNewReply = false;
   loadingReplies = false;
+  repliesError = '';
 
   showReplyButton = true;
   showViewButton = true;
   showNumberOfReplies = true;
   currentDepth = 0;
 
-  constructor() {}
+  constructor(private messageService: MessageService) {}
 
   public toggleReplies() {
+    const handleMessages = ({ messages }) => {
+      this.replies = messages;
+      this.loadingReplies = false;
+      this.repliesError = '';
+      this.showReplies = true;
+    };
+
+    const handleError = e => {
+      this.repliesError = 'failed to load messages';
+      this.replies = [];
+      this.loadingReplies = false;
+    };
+
+    //if replies aren't showing, show them
     if (!this.showReplies) {
       this.loadingReplies = true;
-
-      setTimeout(() => {
-        this.showReplies = true;
-        this.replies = [
-          {
-            id: 'id-1',
-            body: 'This is the text of the message 1',
-            createdAt: new Date('2019-01-05'),
-            owner: 'owner1',
-            numberOfReplies: 22
-          },
-          {
-            id: 'id-1',
-            body: 'This is the text of the message 1',
-            createdAt: new Date('2019-01-05'),
-            owner: 'owner1',
-            numberOfReplies: 0
-          }
-        ];
-        this.loadingReplies = false;
-      }, 1000);
+      this.messageService.getReplies(this.content.id).subscribe(handleMessages, handleError);
     } else {
       this.showReplies = false;
+      this.loadingReplies = false;
     }
   }
 
@@ -65,14 +62,24 @@ export class MessageComponent implements OnInit {
     this.showNewReply = !this.showNewReply;
   }
 
+  deepCopy = object => {
+    const copyObject: any = {};
+    Object.keys(object).forEach(key => {
+      if (object[key] === 'object' && object.hasOwnProperty(object[key])) this.deepCopy(object[key]);
+      else {
+        copyObject[key] = object[key];
+      }
+    });
+    return copyObject;
+  };
+
   ngOnInit(): void {
-    this.currentDepth = JSON.parse(JSON.stringify(this.options.depth));
+    this.currentDepth = this.deepCopy(this.options).depth;
 
     if (this.currentDepth > 1) {
       this.showReplyButton = false;
       this.showNumberOfReplies = false;
     }
     if (this.currentDepth > 1) this.showViewButton = false;
-    // format the date
   }
 }

@@ -11,8 +11,8 @@ export class RepliesComponent implements OnInit {
   @Input()
   depth: number;
 
-  //test value
-  replies: Message[];
+  @Input()
+  list: Message[];
 
   currentDepth: number;
 

@@ -46,7 +46,7 @@
   <ng-container *ngIf="showReplies">
     <div class="row message-replis d-flex justify-content-center mt-3 mb-3">
       <div class="col-11">
-        <replies [id]="content.id" [depth]="currentDepth"></replies>
+        <replies [list]="replies" [depth]="currentDepth"></replies>
       </div>
     </div>
   </ng-container>
