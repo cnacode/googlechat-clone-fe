@@ -1,18 +1,23 @@
 <div class="new-message">
-  <div class="row">
-    <div class="col-12">
-      <styled-textarea
-        id="message"
-        name="message"
-        placeholder="What's on your mind?"
-        [form]="messageForm"
-        [options]="textareaOptions"
-      ></styled-textarea>
+  <form (ngSubmit)="onSubmit()" [formGroup]="messageForm">
+    <div class="row">
+      <div class="col-12">
+        <styled-textarea
+          id="message"
+          name="message"
+          placeholder="What's on your mind?"
+          [form]="messageForm"
+          [options]="textareaOptions"
+        ></styled-textarea>
+      </div>
     </div>
-  </div>
-  <div class="d-flex flex-row-reverse">
-    <div>
-      <styled-button type="submit" size="normal" [disabled]="loading">Post</styled-button>
+    <div class="row d-flex justify-content-center mt-3 mb-3" *ngIf="error.length">
+      <div class="col-10 alert-danger">{{ error }}</div>
     </div>
-  </div>
+    <div class="d-flex flex-row-reverse">
+      <div>
+        <styled-button type="submit" size="normal" [disabled]="loading">Post</styled-button>
+      </div>
+    </div>
+  </form>
 </div>
