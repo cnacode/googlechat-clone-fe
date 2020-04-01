@@ -1,43 +1,20 @@
 
 # Table of Contents
-  - [Project Style](#project-style)
-  - [Folder Structure](#folder-structure)
+  - [Project Code Style](#project-code-style)
+  - [Project Structure](#project-structure)
 
-## Project Style
+## Project Code Style
 The project is following
 https://angular.io/guide/styleguide
 
 
-## Folder Structure
+## Project Structure
     |-- app
-        |-- modules
-        |-- home
-            |-- [+] components
-            |-- [+] pages
-            |-- home-routing.module.ts
-            |-- home.module.ts
-        |-- core
-        |-- [+] authentication
-        |-- [+] footer
-        |-- [+] guards
-        |-- [+] http
-        |-- [+] interceptors
-        |-- [+] mocks
-        |-- [+] services
-        |-- [+] header
-        |-- core.module.ts
-        |-- ensureModuleLoadedOnceGuard.ts
-        |-- logger.service.ts
-        |
-        |-- shared
-            |-- [+] components
-            |-- [+] directives
-            |-- [+] pipes
-            |-- [+] models
-        |
-        |-- [+] configs
-    |-- assets
-        |-- scss
-            |-- [+] partials
-            |-- _base.scss
-            |-- styles.scss
+        |-- Components
+            UI components ready to be used in pages
+        |-- Core
+            Services, Utilities, Interceptors etc. Go here
+        |-- Page
+            Application pages go here. Highest level of logic
+        |-- Shared
+            tiny bits of ui logic, designed to be reusable in Components
