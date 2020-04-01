@@ -1,58 +1,62 @@
-<div class="page-container">
+<div class="page-container" id="login-page">
   <page grid-type="simple">
     <page-content>
-      <card>
-        <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-          <div class="row">
-            <div class="col-12">
-              <h1 class="title">Login</h1>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <styled-input
-                [form]="loginForm"
-                id="username"
-                type="text"
-                name="username"
-                label="Username or Email"
-                size="wide"
-                required="true"
-              >
-              </styled-input>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <styled-input
-                [form]="loginForm"
-                id="password"
-                type="password"
-                name="password"
-                password="password"
-                label="Password"
-                size="wide"
-                required="true"
-              >
-              </styled-input>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <div class="col-12 d-flex justify-content-center">
-              <styled-button type="submit" size="wide" [disabled]="loading">Sign In</styled-button>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <ng-container *ngIf="errors.length">
-              <div class="col-11 alert alert-danger mt-1">
-                <li *ngFor="let error of errors">
-                  {{ error }}
-                </li>
+      <div class="row d-flex justify-content-center">
+        <div class="col-8">
+          <card>
+            <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="mb-5" id="login-form">
+              <div class="row">
+                <div class="col-12">
+                  <h1 class="title">Login</h1>
+                </div>
               </div>
-            </ng-container>
-          </div>
-        </form>
-      </card>
+              <div class="row">
+                <div class="col-12">
+                  <styled-input
+                    [form]="loginForm"
+                    id="username"
+                    type="text"
+                    name="username"
+                    label="Username or Email"
+                    size="wide"
+                    required="true"
+                  >
+                  </styled-input>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <styled-input
+                    [form]="loginForm"
+                    id="password"
+                    type="password"
+                    name="password"
+                    password="password"
+                    label="Password"
+                    size="wide"
+                    required="true"
+                  >
+                  </styled-input>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-12 d-flex justify-content-center">
+                  <styled-button type="submit" size="wide" [disabled]="loading">Sign In</styled-button>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <ng-container *ngIf="errors.length">
+                  <div class="col-11 alert alert-danger mt-1">
+                    <li *ngFor="let error of errors">
+                      {{ error }}
+                    </li>
+                  </div>
+                </ng-container>
+              </div>
+            </form>
+          </card>
+        </div>
+      </div>
     </page-content>
   </page>
 </div>

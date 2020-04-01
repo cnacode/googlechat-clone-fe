@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Message } from '@app/core/models';
 import { MessageService } from '@app/core/services';
-import { deepCopy } from '@app/core/utils';
 
 export interface MessageOptions {
   showViewButton?: boolean;
@@ -64,7 +63,7 @@ export class MessageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.currentDepth = deepCopy(this.options).depth;
+    this.currentDepth = Object.assign({}, { ...this.options }.depth);
 
     if (this.currentDepth > 1) {
       this.showReplyButton = false;

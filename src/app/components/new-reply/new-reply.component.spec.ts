@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NewReplyComponent } from './new-reply.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('NewReplyComponent', () => {
   let component: NewReplyComponent;
@@ -8,9 +9,9 @@ describe('NewReplyComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewReplyComponent ]
-    })
-    .compileComponents();
+      imports: [ReactiveFormsModule, HttpClientModule],
+      declarations: [NewReplyComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

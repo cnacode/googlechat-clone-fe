@@ -38,17 +38,23 @@ label {
 // phone and up
 @media (min-width: 200px) {
   .input {
-    min-width: 80vw;
+    min-width: 40vw;
   }
 }
 //tablet and up
 @media (min-width: 768px) {
   .input {
-    min-width: 60vw;
+    min-width: 40vw;
   }
 }
 // desktop and up
 @media (min-width: 992px) {
+  .input {
+    min-width: 35vw;
+  }
+}
+// desktop and up
+@media (min-width: 1000px) {
   .input {
     min-width: 25vw;
   }

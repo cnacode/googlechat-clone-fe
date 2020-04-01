@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
 import { MessageListComponent } from './message-list.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 describe('MessageListComponent', () => {
   let component: MessageListComponent;
@@ -8,9 +9,9 @@ describe('MessageListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MessageListComponent ]
-    })
-    .compileComponents();
+      declarations: [MessageListComponent],
+      imports: [HttpClientModule, NgxPaginationModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
