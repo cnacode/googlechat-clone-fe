@@ -16,7 +16,7 @@ import { NewReplyComponent } from '@app/components/new-reply/';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { JwtInterceptor } from '@app/core/interceptors';
 import { ErrorInterceptor } from '@app/core/interceptors';
-import { LoggingInterceptor } from '@app/core/interceptors';
+import { MockingInterceptor } from '@app/core/interceptors';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -50,7 +50,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
     //data mocking
-    { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: MockingInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

@@ -52,7 +52,8 @@ export class AuthenticationService {
       .post<any>(`${environment.apiUrl}/authentication`, { username, password })
       .pipe(
         catchError(response => {
-          return throwError(response.error.message);
+          console.log(response);
+          return throwError(response);
         }),
         map(response => {
           const { user } = response;
