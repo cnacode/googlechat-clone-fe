@@ -1,21 +1,13 @@
 @import '../../../assets/styles/variables.scss';
 
 .page-container {
-  $start: $color-gradient-start;
-  $end: $color-gradient-end;
-
-  background: $color-background-primary;
-  background: -webkit-linear-gradient(-135deg, $start, $end);
-  background: -o-linear-gradient(-135deg, $start, $end);
-  background: -moz-linear-gradient(-135deg, $start, $end);
-  background: linear-gradient(-135deg, $start, $end);
   height: 100vh;
   width: 100vw;
   padding: 0.2rem;
 
   .title {
     text-align: center;
-    line-height: 3.2;
+    line-height: 2.2;
   }
 }
 

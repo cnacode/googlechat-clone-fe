@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { PageComponent, PageTitle, PageContent } from '@app/shared/page';
-import { SimplePageComponent, SimplePageContent, SimplePageTitle } from '@app/shared/simple-page';
-import { StyledButtonComponent } from '@app/shared/styled-button';
-import { CardComponent } from '@app/shared/card';
-import { TinyTextComponent } from '@app/shared/tiny-text';
-import { StyledInputComponent } from '@app/shared/styled-input';
-import { StyledTextAreaComponent } from '@app/shared/styled-textarea';
+import { PageComponent, PageTitle, PageContent } from '@app/components/shared/page';
+import { SimplePageComponent, SimplePageContent, SimplePageTitle } from '@app/components/shared/simple-page';
+import { StyledButtonComponent } from '@app/components/shared/styled-button';
+import { CardComponent } from '@app/components/shared/card';
+import { TinyTextComponent } from '@app/components/shared/tiny-text';
+import { StyledInputComponent } from '@app/components/shared/styled-input';
+import { StyledTextAreaComponent } from '@app/components/shared/styled-textarea';
 
 @NgModule({
   declarations: [

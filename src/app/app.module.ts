@@ -7,7 +7,7 @@ import { AppComponent } from '@app/app.component';
 import { LoginComponent } from '@app/pages/login/login.component';
 import { HomeComponent } from '@app/pages/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from './shared/shared.module';
+import { SharedModule } from './components/shared/shared.module';
 import { NewMessageComponent } from '@app/components/new-message';
 import { MessageListComponent } from '@app/components/message-list';
 import { MessageComponent } from '@app/components/message';
@@ -16,6 +16,8 @@ import { NewReplyComponent } from '@app/components/new-reply/';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { JwtInterceptor } from '@app/core/interceptors';
 import { ErrorInterceptor } from '@app/core/interceptors';
+import { LoggingInterceptor } from '@app/core/interceptors';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -39,11 +41,16 @@ import { ErrorInterceptor } from '@app/core/interceptors';
     SharedModule,
 
     // thirdparty modules
-    NgxPaginationModule
+    NgxPaginationModule,
+
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    //data mocking
+    { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

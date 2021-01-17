@@ -1,4 +1,4 @@
-@import '.../../../../../assets/styles/variables.scss';
+@import '../../../../assets/styles/variables.scss';
 
 .card {
   display: -webkit-box;
@@ -15,7 +15,7 @@
   background-size: cover;
   background-repeat: no-repeat;
 
-  border-width: 2px;
-  border-color: $color-background-primary;
+  border-width: 1px;
+  border-color: $color-grey;
   border-radius: 5px;
 }

@@ -1,4 +1,4 @@
-@import '../../../assets/styles/variables.scss';
+@import '../../../../assets/styles/variables.scss';
 
 label {
   display: block;
@@ -8,7 +8,7 @@ label {
 .label {
   font-family: Montserrat-SemiBold;
   font-size: 1.3rem;
-  color: #555555;
+  color: $color-black;
   line-height: 1.6;
 }
 
@@ -21,7 +21,7 @@ label {
   border-radius: 5px;
 
   font-family: Poppins-Regular;
-  color: #333333;
+  color: $color-black;
   line-height: 1.2;
   font-size: 18px;
 
@@ -29,10 +29,6 @@ label {
   background: transparent;
   height: 3rem;
   padding: 0 0.4rem;
-
-  &:focus {
-    border-color: lighten($color: $color-background-primary, $amount: 25%);
-  }
 }
 
 // phone and up

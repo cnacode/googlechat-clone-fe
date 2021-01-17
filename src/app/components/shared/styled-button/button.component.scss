@@ -1,3 +1,5 @@
+@import '../../../../assets/styles/variables.scss';
+
 button {
   outline: none !important;
   border: none;
@@ -19,12 +21,13 @@ button {
   align-items: center;
   padding: 0 2rem;
   height: 60px;
-  background-color: #333333;
   border-radius: 10px;
+  color: $color-black;
+  border-width: 1px;
+  border-color: $color-grey;
 
   font-family: Poppins-Medium;
   font-size: 1.1rem;
-  color: #fff;
   line-height: 1.2;
 
   -webkit-transition: all 0.4s;
@@ -44,11 +47,6 @@ button {
     border-radius: 10px;
     top: 0;
     left: 0;
-    background: #a64bf4;
-    background: -webkit-linear-gradient(45deg, #00dbde, #fc00ff);
-    background: -o-linear-gradient(45deg, #00dbde, #fc00ff);
-    background: -moz-linear-gradient(45deg, #00dbde, #fc00ff);
-    background: linear-gradient(45deg, #00dbde, #fc00ff);
     opacity: 0;
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;

@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '@app/core/services';
-import { GridTypes } from '@app/shared/page';
+import { GridTypes } from '@app/components/shared/page';
 
 /**
  * This is the login page, includes:

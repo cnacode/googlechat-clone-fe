@@ -55,9 +55,10 @@ export class AuthenticationService {
           return throwError(response.error.message);
         }),
         map(response => {
-          const { user, message } = response;
+          const { user } = response;
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('user', JSON.stringify(user));
+
           this.userSource.next(user);
           return user;
         })
